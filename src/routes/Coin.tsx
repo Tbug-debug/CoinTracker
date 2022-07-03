@@ -30,7 +30,7 @@ const Header = styled.header`
 const Overview = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${(props) => props.theme.coinsBackground};
   padding: 10px 20px;
   border-radius: 10px;
 `;
@@ -62,12 +62,12 @@ const Tab = styled.span<{ isActive: boolean }>`
   text-transform: uppercase;
   font-size: 20px;
   font-weight: 400;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${(props) => props.theme.coinsBackground};
   padding: 15px 0px;
   width: 500px;
   border-radius: 10px;
   color: ${(props) =>
-    props.isActive ? props.theme.accentColor : props.theme.textColor};
+    props.isActive ? props.theme.hoverColor : props.theme.textColor};
   a {
     display: block;
   }
@@ -90,12 +90,12 @@ const BackButton = styled.div`
 `;
 
 const Buton = styled.div`
-  border: 1px solid wheat;
+  border: 1px solid ${(props) => props.theme.borderColor};
   width: 150px;
   display: flex;
   justify-content: center;
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 10px;
 `;
 
 interface RouteParams {
