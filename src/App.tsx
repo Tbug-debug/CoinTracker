@@ -4,7 +4,23 @@ import { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "./theme";
 import { useRecoilValue } from "recoil";
 import { isDarkAtom } from "./atoms";
+import { useSetRecoilState } from "recoil";
+import styled from "styled-components";
 //import { ReactQueryDevtools } from "react-query/devtools";
+
+const Button = styled.div`
+  padding-left: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  button {
+    border: none;
+    cursor: pointer;
+    background-color: #3f72af;
+    padding: 10px;
+    border-radius: 20px;
+  }
+`;
 
 const GlobalStyle = createGlobalStyle`
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -65,8 +81,13 @@ a {
 `;
 function App() {
   const isDark = useRecoilValue(isDarkAtom);
+  const DarkLight = useSetRecoilState(isDarkAtom);
+  const toggleDarkLight = () => DarkLight((prev) => !prev);
   return (
     <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+      <Button>
+        <button onClick={toggleDarkLight}>Dark/Light</button>
+      </Button>
       <GlobalStyle />
       <Router />
     </ThemeProvider>

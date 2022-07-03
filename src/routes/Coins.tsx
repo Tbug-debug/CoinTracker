@@ -2,10 +2,8 @@
 import { Helmet } from "react-helmet";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { fetchCoins } from "../api";
-import { isDarkAtom } from "../atoms";
 
 const Container = styled.div`
   padding: 0px 20px;
@@ -43,7 +41,7 @@ const Coin = styled.li`
 
 const Title = styled.h1`
   font-size: 50px;
-  color: ${(props) => props.theme.accentColor};
+  color: ${(props) => props.theme.textColor};
 `;
 
 const Loader = styled.span`
@@ -68,8 +66,6 @@ interface CoinObject {
 }
 
 function Coins() {
-  const DarkLight = useSetRecoilState(isDarkAtom);
-  const toggleDarkLight = () => DarkLight((prev) => !prev);
   const { isLoading, data } = useQuery<CoinObject[]>("allCoins", fetchCoins);
 
   /*   const [coins, setCoin] = useState<CoinObject[]>([]);
@@ -90,7 +86,6 @@ function Coins() {
       </Helmet>
       <Header>
         <Title>Coin</Title>
-        <button onClick={toggleDarkLight}>Dark/Light</button>
       </Header>
       {isLoading ? (
         <Loader>Loading...</Loader>

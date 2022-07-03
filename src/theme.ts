@@ -12,7 +12,7 @@ export const darkTheme: DefaultTheme = {
 
 export const lightTheme: DefaultTheme = {
   bgColor: "#whitesmoke",
-  textColor: "black",
+  textColor: "#393E46",
   accentColor: "#00a8ff",
   borderColor: "#1B262C",
   coinsBackground: "#C9D6DF",
